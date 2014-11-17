@@ -4,6 +4,8 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Net.NetworkInformation;
+using System.Net;
 
 namespace TheBoxSoftware.Licencing
 {
@@ -232,6 +234,49 @@ namespace TheBoxSoftware.Licencing
                 get { return this.hasExpired; }
                 set { this.hasExpired = value; }
             }
+        }
+
+        public static DateTime GetActivationDetails()
+        {
+            string responseFromServer = string.Empty;
+
+            try
+            {
+                NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+                //for each j you can get the MAC 
+                PhysicalAddress address = nics[0].GetPhysicalAddress();
+                byte[] bytes = address.GetAddressBytes();
+                StringBuilder sbAddress = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    // Display the physical address in hexadecimal. 
+                    sbAddress.AppendFormat("{0}", bytes[i].ToString("X2"));
+                    // Insert a hyphen after each byte, unless we are at the end of the address. 
+                    if (i != bytes.Length - 1)
+                    {
+                        sbAddress.Append("-");
+                    }
+                }
+
+                // Create a request for the URL. 
+                WebRequest request = WebRequest.Create(
+                  "http://services.theboxsoftware.com/livedocumenter/registertrial/" + sbAddress.ToString());
+                request.Credentials = CredentialCache.DefaultCredentials;
+                WebResponse response = request.GetResponse();
+                Stream dataStream = response.GetResponseStream();
+                StreamReader reader = new StreamReader(dataStream);
+                responseFromServer = reader.ReadToEnd();
+
+                reader.Close();
+                response.Close();
+            }
+            catch (Exception ex) { int x = 0;  }
+            finally { }
+
+            DateTime endDate = DateTime.MinValue;
+            DateTime.TryParse(responseFromServer, out endDate);
+
+            return endDate;
         }
     }
 }
