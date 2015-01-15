@@ -145,6 +145,7 @@ namespace TheBoxSoftware.Documentation {
 					}
 				}
 				
+                // for each project read all the references
 				foreach (string project in projectFiles) {
 					string fullProjectPath = System.IO.Path.GetDirectoryName(this.FileName) + "\\" + project;
 					if (System.IO.File.Exists(fullProjectPath)) {
@@ -216,6 +217,7 @@ namespace TheBoxSoftware.Documentation {
 				ProjectFileProperties properties = this.ParseProject();
 
 				if (!string.IsNullOrEmpty(properties.OutputPath)) {
+                    // build the reference location for the projects output
 					string outputFile = string.Format(@"{0}\{1}{2}.{3}",
 									System.IO.Path.GetDirectoryName(this.FileName),
 									properties.OutputPath,
@@ -242,7 +244,7 @@ namespace TheBoxSoftware.Documentation {
 						};
 				}
 				else {
-					throw new InvalidOperationException();
+					throw new InvalidOperationException("No output path defined for the project.");
 				}
 			}
 

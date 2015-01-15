@@ -119,6 +119,7 @@
       <Link>LibraryVersionInfo.cs</Link>
     </Compile>
     <Compile Include="AssemblyFirstDocumentMapper.cs" />
+    <Compile Include="BuildConfiguration.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="DocumentedAssembly.cs" />
     <Compile Include="DocumentMap.cs" />

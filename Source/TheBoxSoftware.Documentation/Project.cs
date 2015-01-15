@@ -63,7 +63,7 @@ namespace TheBoxSoftware.Documentation {
 		public Reflection.Syntax.Languages Language { get; set; }
 
 		/// <summary>
-		/// The output location used for this documentation set
+		/// The location the exported documentation will be output to.
 		/// </summary>
 		[XmlElement("outputlocation")]
 		public string OutputLocation { get; set; }
