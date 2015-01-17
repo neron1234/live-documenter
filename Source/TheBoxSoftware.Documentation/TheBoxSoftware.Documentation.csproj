@@ -170,6 +170,12 @@
     <Compile Include="Exporting\WebsiteExporter.cs" />
     <Compile Include="Exporting\Website\IndexXmlRenderer.cs" />
     <Compile Include="Exporting\XmlExporter.cs" />
+    <Compile Include="FileParsers\FileReader.cs" />
+    <Compile Include="FileParsers\LibraryFileReader.cs" />
+    <Compile Include="FileParsers\ProjectFileReader.cs" />
+    <Compile Include="FileParsers\SolutionFileReader.cs" />
+    <Compile Include="FileParsers\VS2003ProjectFileReader.cs" />
+    <Compile Include="FileParsers\VS2005ProjectFileReader.cs" />
     <Compile Include="GroupedNamespaceDocumentMapper.cs" />
     <Compile Include="InputFileReader.cs" />
     <Compile Include="Mappers.cs" />
