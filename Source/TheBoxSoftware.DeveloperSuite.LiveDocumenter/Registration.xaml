@@ -1,0 +1,11 @@
+﻿<Window x:Class="TheBoxSoftware.DeveloperSuite.LiveDocumenter.Registration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Registration" Height="389" Width="510">
+    <Grid>
+    	<Border Grid.Row="0" BorderBrush="#FF57bfcb" BorderThickness="0,0,0,1" Background="#FF57bfcb" VerticalAlignment="Top" Height="63.485">
+    		<TextBlock Margin="8,13,50,0" Text="Document Settings" TextWrapping="Wrap" FontSize="24" Foreground="#FFFFFFFF" VerticalAlignment="Top" Height="32"/>
+    	</Border>
+
+    </Grid>
+</Window>
